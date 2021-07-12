@@ -1,6 +1,11 @@
+import SpotifyWebApi from 'spotify-web-api-js'
+
 export const authEndpoint = process.env.REACT_APP_SPOTIFY_AUTH_ENDPOINT
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID
 const redirectUri = process.env.REACT_APP_SPOTIFY_REDIRECT_URI
+
+// Spotify web api object
+export const spotify = new SpotifyWebApi()
 
 const scopes = [
     'user-read-currently-playing',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import Login from './components/Login/Login'
-import { getTokenFromResponse, SPOTIFY_HASH } from './service/spotify'
+import { getTokenFromResponse, spotify, SPOTIFY_HASH } from './service/spotify'
 
 function App() {
     const [token, setToken] = useState<string | undefined>(undefined)
@@ -14,6 +14,12 @@ function App() {
         const _token: string = hash.access_token
         if (_token) {
             setToken(_token)
+            // initialize spotify web api object with the token
+            spotify.setAccessToken(_token)
+
+            spotify.getMe().then((user) => {
+                console.log('the user', user)
+            })
         }
     }, [])
 
