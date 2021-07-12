@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import Login from './components/Login/Login'
-import { getTokenFromResponse, spotify, SPOTIFY_HASH } from './service/spotify'
+import {
+    getTokenFromResponse,
+    spotify,
+    SPOTIFY_HASH,
+} from './services/spotify/spotify'
 
 function App() {
     const [token, setToken] = useState<string | undefined>(undefined)
