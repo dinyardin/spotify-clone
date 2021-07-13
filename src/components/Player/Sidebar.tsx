@@ -4,8 +4,11 @@ import SidebarOption from './SidebarOption'
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic'
+import { useAppContextValue } from '../../services/store/AppContext'
 
 function SideBar() {
+    const [state, dispatch] = useAppContextValue()
+
     return (
         <div className="sidebar">
             <img
@@ -22,9 +25,9 @@ function SideBar() {
             <strong className="sidebar__title">PLAYLISTS</strong>
             <hr />
 
-            <SidebarOption title="Rock" />
-            <SidebarOption title="R&B" />
-            <SidebarOption title="Classic" />
+            {state.playlists?.items?.map((playlist: any, index: number) => (
+                <SidebarOption key={index} title={playlist.name} />
+            ))}
         </div>
     )
 }
