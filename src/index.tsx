@@ -2,11 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
+import { AppContextProvider } from './services/store/AppContext'
+import reducer, { initialState } from './services/store/reducer'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <AppContextProvider initialState={initialState} reducer={reducer}>
+            <App />
+        </AppContextProvider>
     </React.StrictMode>,
     document.getElementById('root')
 )
