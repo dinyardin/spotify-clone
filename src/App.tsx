@@ -31,15 +31,23 @@ function App() {
             // initialize spotify web api object with the token
             spotify.setAccessToken(_token)
 
-            spotify.getMe().then((user) => {
-                //console.log('the user', user)
+            console.log('----token---->', _token)
+            console.log('----spotify---->', spotify)
 
-                // updating the AppContext with spotify user object
-                dispatch({
-                    type: 'SET_USER',
-                    payload: user,
+            spotify
+                .getMe()
+                .then((user) => {
+                    //console.log('the user', user)
+
+                    // updating the AppContext with spotify user object
+                    dispatch({
+                        type: 'SET_USER',
+                        payload: user,
+                    })
                 })
-            })
+                .catch((e) => {
+                    console.log('error -->', e)
+                })
 
             // retrive users playlist
             spotify.getUserPlaylists().then((playlists) => {
@@ -49,6 +57,21 @@ function App() {
                     payload: playlists,
                 })
             })
+
+            // retrive the discover weekly feed
+            spotify
+                .getPlaylist(
+                    process.env.REACT_APP_SPOTIFY_PLAYLIST_ID as string
+                )
+                .then((response) =>
+                    dispatch({
+                        type: 'SET_DISCOVER_WEEKLY',
+                        payload: response,
+                    })
+                )
+                .catch((e) => {
+                    console.log('error -->', e)
+                })
         }
     }, [])
 
