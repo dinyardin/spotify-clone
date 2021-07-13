@@ -9,7 +9,20 @@
 }
 
 .sidebar__title {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 12px;
 }
 
 .sidebar__logo {
+    height: 70px;
+    padding: 10px;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.sidebar > hr {
+    border: 1px solid #282828;
+    width: 90%;
+    margin: 10px auto;
 }
