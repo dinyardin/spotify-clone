@@ -13,7 +13,14 @@ import { Grid, Slider } from '@material-ui/core'
 function Footer() {
     return (
         <div className="footer">
-            <div className="footer__left">{/*  Album and song details */}1</div>
+            <div className="footer__left">
+                {/*  Album and song details */}
+                <img className="footer__albumLogo" src="" alt="" />
+                <div className="footer__songInfo">
+                    <h4>Song name</h4>
+                    <p>Artist's name</p>
+                </div>
+            </div>
             <div className="footer__center">
                 {/* Player controller */}
                 <ShuffleIcon className="footer__green" />
