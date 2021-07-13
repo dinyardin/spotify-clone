@@ -22,6 +22,11 @@ function App() {
         if (_token) {
             setToken(_token)
 
+            dispatch({
+                type: 'SET_TOKEN',
+                payload: _token,
+            })
+
             // initialize spotify web api object with the token
             spotify.setAccessToken(_token)
 
@@ -38,6 +43,7 @@ function App() {
     }, [])
 
     console.log('the user', state.user)
+    console.log('the token', state.token)
 
     return (
         <div className="app">
