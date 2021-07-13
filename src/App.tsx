@@ -6,9 +6,12 @@ import {
     spotify,
     SPOTIFY_HASH,
 } from './services/spotify/spotify'
+import { useAppContextValue } from './services/store/AppContext'
 
 function App() {
     const [token, setToken] = useState<string | undefined>(undefined)
+    const [state, dispatch] = useAppContextValue()
+
     useEffect(() => {
         const hash: SPOTIFY_HASH = getTokenFromResponse()
         console.log(hash)
@@ -18,14 +21,23 @@ function App() {
         const _token: string = hash.access_token
         if (_token) {
             setToken(_token)
+
             // initialize spotify web api object with the token
             spotify.setAccessToken(_token)
 
             spotify.getMe().then((user) => {
-                console.log('the user', user)
+                //console.log('the user', user)
+
+                // updating the AppContext with spotify user object
+                dispatch({
+                    type: 'SET_USER',
+                    payload: user,
+                })
             })
         }
     }, [])
+
+    console.log('the user', state.user)
 
     return (
         <div className="app">
