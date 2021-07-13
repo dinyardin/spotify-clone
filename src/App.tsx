@@ -15,7 +15,7 @@ function App() {
 
     useEffect(() => {
         const hash: SPOTIFY_HASH = getTokenFromResponse()
-        console.log(hash)
+        console.log('hash--->', hash)
         // this is to hide the access token from url for security purposes
         window.location.hash = ''
 
@@ -77,6 +77,7 @@ function App() {
 
     console.log('the user', state.user)
     console.log('the token', state.token)
+    console.log('the state', state)
 
     return (
         <div className="app">
