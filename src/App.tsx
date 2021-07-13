@@ -40,6 +40,15 @@ function App() {
                     payload: user,
                 })
             })
+
+            // retrive users playlist
+            spotify.getUserPlaylists().then((playlists) => {
+                // update the appcontext with these playlists
+                dispatch({
+                    type: 'SET_PLAYLISTS',
+                    payload: playlists,
+                })
+            })
         }
     }, [])
 

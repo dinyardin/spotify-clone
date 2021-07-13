@@ -8,7 +8,7 @@
 export const initialState: any = {
     user: null,
     token: null,
-    playlist: [],
+    playlists: [],
     playing: false,
     item: null,
 }
@@ -32,6 +32,11 @@ const reducer = (
             return {
                 ...state,
                 token: action.payload,
+            }
+        case 'SET_PLAYLISTS':
+            return {
+                ...state,
+                playlists: action.payload,
             }
         default:
             return state
