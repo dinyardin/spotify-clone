@@ -34,10 +34,10 @@ function Footer() {
                 {/* Volume controller */}
                 <Grid container spacing={2}>
                     <Grid item>
-                        <PlaylistPlayIcon />
+                        <PlaylistPlayIcon className="footer__icon" />
                     </Grid>
                     <Grid item>
-                        <VolumeDownIcon />
+                        <VolumeDownIcon className="footer__icon" />
                     </Grid>
                     <Grid item xs>
                         <Slider aria-labelledby="continuous-slider" />
