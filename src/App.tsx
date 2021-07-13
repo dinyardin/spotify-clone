@@ -7,6 +7,7 @@ import {
     SPOTIFY_HASH,
 } from './services/spotify/spotify'
 import { useAppContextValue } from './services/store/AppContext'
+import Player from './components/Player/Player'
 
 function App() {
     const [token, setToken] = useState<string | undefined>(undefined)
@@ -47,14 +48,7 @@ function App() {
 
     return (
         <div className="app">
-            {token ? (
-                <h1>
-                    If theres token/authorized, we'll get into app from this
-                    point, otherwise user is redirected to login page
-                </h1>
-            ) : (
-                <Login />
-            )}
+            {token ? <Player spotify={spotify} /> : <Login />}
         </div>
     )
 }
