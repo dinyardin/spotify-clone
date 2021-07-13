@@ -10,7 +10,7 @@ interface Prop {
     children: any
 }
 
-// wrapper component that will give Appcontext access to child components.
+// wrapper component that will give child components access to appcontext values.
 export const AppContextProvider = (props: Prop) => (
     <AppContext.Provider value={useReducer(props.reducer, props.initialState)}>
         {props.children}
