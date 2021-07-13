@@ -41,3 +41,7 @@
     margin-right: 20px;
     object-fit: contain;
 }
+
+.footer__green {
+    color: #1ed15e;
+}
