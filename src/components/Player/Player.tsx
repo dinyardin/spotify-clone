@@ -15,7 +15,7 @@ function Player(props: Prop) {
                 {/* side bar */}
                 <Sidebar />
                 {/* body */}
-                <Body />
+                <Body spotify={props.spotify} />
             </div>
             {/* footer */}
             <Footer />
