@@ -1,31 +1,34 @@
-interface IAppContext {}
+// interface State {
+//     user: any
+//     playlist: any[]
+//     playing: boolean
+//     item: any
+// }
 
-export const initialState: IAppContext = {
+export const initialState: any = {
     user: null,
     playlist: [],
     playing: false,
-    iten: null,
+    item: null,
 }
 
-interface Prop {
-    state: any
+const reducer = (
+    state: any,
     action: {
         type: string
         payload: any
     }
-}
+) => {
+    console.log('---Action---> ', action)
 
-const reducer = (props: Prop) => {
-    console.log('---Action---> ', props.action)
-
-    switch (props.action.type) {
+    switch (action.type) {
         case 'SET_USER':
             return {
-                ...props.state,
-                user: props.action.payload,
+                ...state,
+                user: action.payload,
             }
         default:
-            return props.state
+            return state
     }
 }
 
