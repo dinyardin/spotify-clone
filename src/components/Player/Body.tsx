@@ -18,16 +18,16 @@ function Body(props: Prop) {
         <div className="body">
             <Header spotify={props.spotify} />
             <div className="body__info">
-                {state.discover_weekly ? (
+                {state.playlist_tracks ? (
                     <>
                         <img
-                            src={state.discover_weekly?.images[0].url}
+                            src={state.playlist_tracks?.images[0].url}
                             alt=""
                         />
                         <div className="body__infoText">
                             <strong>PLAYLIST</strong>
-                            <h2>Discover Weekly</h2>
-                            <p>{state.discover_weekly?.description}</p>
+                            <h2>{state.playlist_title}</h2>
+                            <p>{state.playlist_tracks?.description}</p>
                         </div>
                     </>
                 ) : (
@@ -39,11 +39,12 @@ function Body(props: Prop) {
                     <PlayCircleFilledIcon className="body__shuffle" />
                     <FavoriteIcon fontSize="large" />
                     <MoreHorizIcon />
-
-                    {/* List of songs */}
-                    {/* {state.playlists.items[0].tracks.map((track: any) => (
-                        <Song track={track} />
-                    ))} */}
+                </div>
+                {/* List of songs */}
+                <div>
+                    {state.playlist_tracks?.tracks.items.map((item: any) => (
+                        <Song track={item.track} />
+                    ))}
                 </div>
             </div>
         </div>

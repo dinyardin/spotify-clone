@@ -57,27 +57,38 @@ function App() {
                     payload: playlists,
                 })
             })
-
-            // retrive the discover weekly feed
-            spotify
-                .getPlaylist(
-                    process.env.REACT_APP_SPOTIFY_PLAYLIST_ID as string
-                )
-                .then((response) =>
-                    dispatch({
-                        type: 'SET_DISCOVER_WEEKLY',
-                        payload: response,
-                    })
-                )
-                .catch((e) => {
-                    console.log('error -->', e)
-                })
         }
     }, [])
+
+    // get playlist tracks when playlists get clicked
+    useEffect(() => {
+        const getPlaylistId = (playlist_title: string): string => {
+            let id: string = ''
+            state.playlists?.items?.map((item: any) => {
+                if (item.name === playlist_title) {
+                    id = item.id
+                }
+            })
+            return id
+        }
+
+        spotify
+            .getPlaylist(getPlaylistId(state.playlist_title))
+            .then((response) => {
+                dispatch({
+                    type: 'SET_PLAYLIST_TRACKS',
+                    payload: response,
+                })
+            })
+            .catch((e) => {
+                console.log('error -->', e)
+            })
+    }, [state.playlist_title])
 
     console.log('the user', state.user)
     console.log('the token', state.token)
     console.log('the state', state)
+    console.log('uuuwww--->  ', state.playlist_title)
 
     return (
         <div className="app">

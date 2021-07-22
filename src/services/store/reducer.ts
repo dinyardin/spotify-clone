@@ -12,6 +12,8 @@ export const initialState: any = {
     playing: false,
     item: null,
     discover_weekly: null,
+    playlist_title: null,
+    playlist_tracks: null,
 }
 
 const reducer = (
@@ -43,6 +45,16 @@ const reducer = (
             return {
                 ...state,
                 discover_weekly: action.payload,
+            }
+        case 'SET_PLAYLIST_TITLE':
+            return {
+                ...state,
+                playlist_title: action.payload,
+            }
+        case 'SET_PLAYLIST_TRACKS':
+            return {
+                ...state,
+                playlist_tracks: action.payload,
             }
         default:
             return state
