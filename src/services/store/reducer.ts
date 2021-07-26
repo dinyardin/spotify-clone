@@ -15,6 +15,7 @@ export const initialState: any = {
     playlist_title: null,
     playlist_tracks: null,
     isSearch: false,
+    isHome: false,
 }
 
 const reducer = (
@@ -61,6 +62,11 @@ const reducer = (
             return {
                 ...state,
                 isSearch: action.payload,
+            }
+        case 'SET_IS_HOME':
+            return {
+                ...state,
+                isHome: action.payload,
             }
         default:
             return state

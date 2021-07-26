@@ -38,6 +38,22 @@ function SidebarOption(props: Prop) {
                 payload: false,
             })
         }
+        if (props.title === 'Home') {
+            dispatch({
+                type: 'SET_IS_HOME',
+                payload: true,
+            })
+
+            dispatch({
+                type: 'SET_PLAYLIST_TRACKS',
+                payload: null,
+            })
+        } else {
+            dispatch({
+                type: 'SET_IS_HOME',
+                payload: false,
+            })
+        }
     }
 
     return (

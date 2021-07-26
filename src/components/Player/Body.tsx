@@ -17,7 +17,7 @@ function Body(props: Prop) {
         <div className="body">
             <Header spotify={props.spotify} />
             <div className="body__info">
-                {state.playlist_tracks ? (
+                {state.playlist_tracks && (
                     <>
                         <img
                             src={state.playlist_tracks?.images[0].url}
@@ -29,9 +29,20 @@ function Body(props: Prop) {
                             <p>{state.playlist_tracks?.description}</p>
                         </div>
                     </>
-                ) : (
-                    <div className="body__general">
-                        Search for a song or play one from the playlists
+                )}
+                {state.isSearch && (
+                    <div className="body__general">Search for a song</div>
+                )}
+                {state.isHome && (
+                    <div
+                        className="body__general"
+                        style={{ display: 'flex', flexDirection: 'column' }}
+                    >
+                        <h2>Welcome to Spotify clone!</h2>
+                        <br />
+                        <p>
+                            Search for a song or play from the user's playlists
+                        </p>
                     </div>
                 )}
             </div>

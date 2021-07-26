@@ -12,6 +12,22 @@ function SideBar() {
     return (
         <div className="sidebar">
             <img
+                onClick={() => {
+                    dispatch({
+                        type: 'SET_IS_HOME',
+                        payload: true,
+                    })
+
+                    dispatch({
+                        type: 'SET_PLAYLIST_TRACKS',
+                        payload: null,
+                    })
+
+                    dispatch({
+                        type: 'SET_IS_SEARCH',
+                        payload: false,
+                    })
+                }}
                 className="sidebar__logo"
                 src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
                 alt=""
