@@ -14,6 +14,9 @@ const scopes = [
     'user-top-read',
     'user-modify-playback-state',
     'playlist-read-private',
+    'streaming',
+    'user-library-read',
+    'user-library-modify',
 ]
 
 // function to pull out access token from url
