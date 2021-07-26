@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAppContextValue } from '../../services/store/AppContext'
 import './Song.css'
 
 interface Prop {
@@ -6,8 +7,18 @@ interface Prop {
 }
 
 function Song(props: Prop) {
+    const [state, dispatch] = useAppContextValue()
+
     return (
-        <div className="songRow">
+        <div
+            className="songRow"
+            onClick={() => {
+                dispatch({
+                    type: 'SET_TRACK',
+                    payload: props.track,
+                })
+            }}
+        >
             <img
                 className="songRow__album"
                 src={props.track.album.images[0].url}

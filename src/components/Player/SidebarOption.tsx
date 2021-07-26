@@ -29,6 +29,11 @@ function SidebarOption(props: Prop) {
             })
 
             dispatch({
+                type: 'SET_SEARCHED_TRACKS',
+                payload: null,
+            })
+
+            dispatch({
                 type: 'SET_IS_SEARCH',
                 payload: true,
             })
@@ -51,6 +56,11 @@ function SidebarOption(props: Prop) {
 
             dispatch({
                 type: 'SET_SEARCHED_TRACKS',
+                payload: null,
+            })
+
+            dispatch({
+                type: 'SET_TRACK',
                 payload: null,
             })
         } else {

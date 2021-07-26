@@ -9,18 +9,31 @@ import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline'
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import { Grid, Slider } from '@material-ui/core'
+import { useAppContextValue } from '../../services/store/AppContext'
 
 function Footer() {
+    const [state, dispatch] = useAppContextValue()
+
+    console.log('state.track =====>  ', state.track)
     return (
         <div className="footer">
-            <div className="footer__left">
-                {/*  Album and song details */}
-                <img className="footer__albumLogo" src="" alt="" />
-                <div className="footer__songInfo">
-                    <h4>Song name</h4>
-                    <p>Artist's name</p>
+            {state.track ? (
+                <div className="footer__left">
+                    {/*  Album and song details */}
+                    <img
+                        className="footer__albumLogo"
+                        src={state.track.album.images[0].url}
+                        alt=""
+                    />
+                    <div className="footer__songInfo">
+                        <h4>{state.track?.name}</h4>
+                        <p>{state.track?.album.artists[0].name}</p>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="footer__left"></div>
+            )}
+
             <div className="footer__center">
                 {/* Player controller */}
                 <ShuffleIcon className="footer__green" />

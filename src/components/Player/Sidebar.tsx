@@ -32,6 +32,11 @@ function SideBar() {
                         type: 'SET_SEARCHED_TRACKS',
                         payload: null,
                     })
+
+                    dispatch({
+                        type: 'SET_TRACK',
+                        payload: null,
+                    })
                 }}
                 className="sidebar__logo"
                 src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
