@@ -5,7 +5,6 @@ import { useAppContextValue } from '../../services/store/AppContext'
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-import { StarTwoTone } from '@material-ui/icons'
 import Song from './Song'
 interface Prop {
     spotify: any
@@ -31,22 +30,28 @@ function Body(props: Prop) {
                         </div>
                     </>
                 ) : (
-                    <>hey!</>
+                    <div className="body__general">
+                        Search for a song or play one from the playlists
+                    </div>
                 )}
             </div>
-            <div className="body__songs">
-                <div className="body__icons">
-                    <PlayCircleFilledIcon className="body__shuffle" />
-                    <FavoriteIcon fontSize="large" />
-                    <MoreHorizIcon />
+            {state.playlist_tracks ? (
+                <div className="body__songs">
+                    <div className="body__icons">
+                        <PlayCircleFilledIcon className="body__shuffle" />
+                        <FavoriteIcon fontSize="large" />
+                        <MoreHorizIcon />
+                    </div>
+                    {/* List of songs */}
+                    <div>
+                        {state.playlist_tracks?.tracks.items.map(
+                            (item: any) => (
+                                <Song track={item.track} />
+                            )
+                        )}
+                    </div>
                 </div>
-                {/* List of songs */}
-                <div>
-                    {state.playlist_tracks?.tracks.items.map((item: any) => (
-                        <Song track={item.track} />
-                    ))}
-                </div>
-            </div>
+            ) : null}
         </div>
     )
 }
