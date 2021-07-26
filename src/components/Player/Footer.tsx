@@ -10,9 +10,11 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import { Grid, Slider } from '@material-ui/core'
 import { useAppContextValue } from '../../services/store/AppContext'
+import { useState } from 'react'
 
 function Footer() {
     const [state, dispatch] = useAppContextValue()
+    const [isPlaying, setIsPlaying] = useState<boolean>(false)
 
     console.log('state.track =====>  ', state.track)
     return (
@@ -38,8 +40,26 @@ function Footer() {
                 {/* Player controller */}
                 <ShuffleIcon className="footer__green" />
                 <SkipPreviousIcon className="footer__icon" />
-                <PauseCircleOutlineIcon className="footer__icon" />
-                <PlayCircleOutlineIcon className="footer__icon" />
+                <div
+                    onClick={() => {
+                        setIsPlaying((prev) => {
+                            return !prev
+                        })
+                    }}
+                >
+                    {isPlaying ? (
+                        <PauseCircleOutlineIcon
+                            fontSize="large"
+                            className="footer__icon"
+                        />
+                    ) : (
+                        <PlayCircleOutlineIcon
+                            fontSize="large"
+                            className="footer__icon"
+                        />
+                    )}
+                </div>
+
                 <SkipNextIcon className="footer__icon" />
                 <RepeatIcon className="footer__green" />
             </div>
