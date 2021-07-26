@@ -19,6 +19,11 @@ function Body(props: Prop) {
             type: 'SET_IS_HOME',
             payload: true,
         })
+
+        dispatch({
+            type: 'SET_SEARCHED_TRACKS',
+            payload: null,
+        })
     }, [])
 
     return (
@@ -38,9 +43,7 @@ function Body(props: Prop) {
                         </div>
                     </>
                 )}
-                {state.isSearch && (
-                    <div className="body__general">Search for a song</div>
-                )}
+
                 {state.isHome && (
                     <div
                         className="body__general"
@@ -54,6 +57,8 @@ function Body(props: Prop) {
                     </div>
                 )}
             </div>
+
+            {/* Playlist tracks */}
             {state.playlist_tracks ? (
                 <div className="body__songs">
                     <div className="body__icons">
@@ -71,6 +76,19 @@ function Body(props: Prop) {
                     </div>
                 </div>
             ) : null}
+
+            {/* Tracks from search */}
+            {state.searched_tracks && (
+                <div className="body__songs">
+                    <div>
+                        {state.searched_tracks?.items.map((item: any) => (
+                            <Song track={item} />
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {console.log('yuuhooo=====> ', state.searched_tracks)}
         </div>
     )
 }

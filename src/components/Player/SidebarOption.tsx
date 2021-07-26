@@ -48,6 +48,11 @@ function SidebarOption(props: Prop) {
                 type: 'SET_PLAYLIST_TRACKS',
                 payload: null,
             })
+
+            dispatch({
+                type: 'SET_SEARCHED_TRACKS',
+                payload: null,
+            })
         } else {
             dispatch({
                 type: 'SET_IS_HOME',
