@@ -12,13 +12,17 @@ function Header(props: Prop) {
 
     return (
         <div className="header">
-            <div className="header__left">
-                <SearchIcon />
-                <input
-                    placeholder="Search for Artists, Songs, or Podcasts "
-                    type="text"
-                />
-            </div>
+            {state.isSearch && (
+                <div className="header__left">
+                    <SearchIcon />
+                    <input
+                        style={{ outline: 'none' }}
+                        placeholder="Search for Artists, Songs, or Podcasts "
+                        type="text"
+                    />
+                </div>
+            )}
+
             <div className="header__right">
                 <Avatar
                     src={state.user?.images[0]?.url}

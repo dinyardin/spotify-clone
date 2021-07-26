@@ -11,10 +11,33 @@ function SidebarOption(props: Prop) {
     const [state, dispatch] = useAppContextValue()
 
     const handlePlaylist = () => {
-        dispatch({
-            type: 'SET_PLAYLIST_TITLE',
-            payload: props.title,
-        })
+        if (!props.Icon) {
+            dispatch({
+                type: 'SET_PLAYLIST_TITLE',
+                payload: props.title,
+            })
+
+            dispatch({
+                type: 'SET_IS_SEARCH',
+                payload: false,
+            })
+        }
+        if (props.title === 'Search') {
+            dispatch({
+                type: 'SET_PLAYLIST_TRACKS',
+                payload: null,
+            })
+
+            dispatch({
+                type: 'SET_IS_SEARCH',
+                payload: true,
+            })
+        } else {
+            dispatch({
+                type: 'SET_IS_SEARCH',
+                payload: false,
+            })
+        }
     }
 
     return (

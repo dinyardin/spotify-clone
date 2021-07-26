@@ -14,6 +14,7 @@ export const initialState: any = {
     discover_weekly: null,
     playlist_title: null,
     playlist_tracks: null,
+    isSearch: false,
 }
 
 const reducer = (
@@ -55,6 +56,11 @@ const reducer = (
             return {
                 ...state,
                 playlist_tracks: action.payload,
+            }
+        case 'SET_IS_SEARCH':
+            return {
+                ...state,
+                isSearch: action.payload,
             }
         default:
             return state
