@@ -6,6 +6,7 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import Song from './Song'
+import { useEffect } from 'react'
 interface Prop {
     spotify: any
 }
@@ -13,6 +14,13 @@ interface Prop {
 function Body(props: Prop) {
     const [state, dispatch] = useAppContextValue()
     console.log('DW', state.discover_weekly)
+    useEffect(() => {
+        dispatch({
+            type: 'SET_IS_HOME',
+            payload: true,
+        })
+    }, [])
+
     return (
         <div className="body">
             <Header spotify={props.spotify} />
