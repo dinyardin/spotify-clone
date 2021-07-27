@@ -5,7 +5,6 @@ import { Avatar } from '@material-ui/core'
 import { useAppContextValue } from '../../services/store/AppContext'
 import { useState } from 'react'
 import { spotifyApiNode } from '../../services/spotify/spotify'
-import { createPatchMark } from 'jest-diff/build/printDiffs'
 
 interface Prop {
     spotify: any
