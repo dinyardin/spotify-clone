@@ -40,25 +40,37 @@ function Footer() {
                 {/* Player controller */}
                 <ShuffleIcon className="footer__green" />
                 <SkipPreviousIcon className="footer__icon" />
-                <div
+                {/* <div
                     onClick={() => {
                         setIsPlaying((prev) => {
                             return !prev
                         })
                     }}
-                >
-                    {isPlaying ? (
-                        <PauseCircleOutlineIcon
-                            fontSize="large"
-                            className="footer__icon"
-                        />
-                    ) : (
-                        <PlayCircleOutlineIcon
-                            fontSize="large"
-                            className="footer__icon"
-                        />
-                    )}
-                </div>
+                > */}
+                {state.playing ? (
+                    <PauseCircleOutlineIcon
+                        fontSize="large"
+                        className="footer__icon"
+                        onClick={() => {
+                            dispatch({
+                                type: 'SET_PLAY',
+                                payload: false,
+                            })
+                        }}
+                    />
+                ) : (
+                    <PlayCircleOutlineIcon
+                        onClick={() => {
+                            dispatch({
+                                type: 'SET_PLAY',
+                                payload: true,
+                            })
+                        }}
+                        fontSize="large"
+                        className="footer__icon"
+                    />
+                )}
+                {/* </div> */}
 
                 <SkipNextIcon className="footer__icon" />
                 <RepeatIcon className="footer__green" />

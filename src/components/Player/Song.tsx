@@ -14,6 +14,11 @@ function Song(props: Prop) {
             className="songRow"
             onClick={() => {
                 dispatch({
+                    type: 'SET_PLAY',
+                    payload: false,
+                })
+
+                dispatch({
                     type: 'SET_TRACK',
                     payload: props.track,
                 })

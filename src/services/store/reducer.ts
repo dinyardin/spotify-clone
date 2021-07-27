@@ -80,6 +80,11 @@ const reducer = (
                 ...state,
                 track: action.payload,
             }
+        case 'SET_PLAY':
+            return {
+                ...state,
+                playing: action.payload,
+            }
         default:
             return state
     }
