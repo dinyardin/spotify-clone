@@ -8,6 +8,25 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.header__logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    margin-right: 20px;
+    background-color: #282828;
+    /* border-style: solid;
+    border-color: coral; */
+    cursor: pointer;
+    margin-left: 20px;
+    color: white;
+    font-size: medium;
 }
 
 .header__left {

@@ -5,6 +5,9 @@ import { Avatar } from '@material-ui/core'
 import { useAppContextValue } from '../../services/store/AppContext'
 import { useState } from 'react'
 import { spotifyApiNode } from '../../services/spotify/spotify'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import Button from 'react-bootstrap/Button'
 
 interface Prop {
     spotify: any
@@ -53,13 +56,29 @@ function Header(props: Prop) {
                     />
                 </div>
             )}
-
             <div className="header__right">
-                <Avatar
-                    src={state.user?.images[0]?.url}
-                    alt={state.user?.display_name}
-                />
-                <h4>{state.user?.display_name}</h4>
+                {['bottom'].map((placement) => (
+                    <OverlayTrigger
+                        trigger="click"
+                        key={placement}
+                        placement="bottom"
+                        overlay={
+                            <Popover id="id">
+                                <Popover.Body className="header__logout">
+                                    <div>Log out</div>
+                                </Popover.Body>
+                            </Popover>
+                        }
+                    >
+                        <Button className="header__right">
+                            <Avatar
+                                src={state.user?.images[0]?.url}
+                                alt={state.user?.display_name}
+                            />
+                            <h4>{state.user?.display_name}</h4>
+                        </Button>
+                    </OverlayTrigger>
+                ))}
             </div>
         </div>
     )
